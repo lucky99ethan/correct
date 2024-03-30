@@ -8,6 +8,7 @@ import { Button, View, withAuthenticator } from "@aws-amplify/ui-react";
 import { createStock as createStockMutation, deleteStock as deleteStockMutation, updateStock as updateStockMutation } from "../../../src/graphql/mutations";
 import type { WithAuthenticatorProps } from "@aws-amplify/ui-react";
 import config from "../src/amplifyconfiguration.json";
+import "@aws-amplify/ui-react/styles.css";
 
 Amplify.configure(config);
 
