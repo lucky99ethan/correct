@@ -1,26 +1,23 @@
 "use client";
 import React, { useState } from 'react';
-import { Amplify } from "react";
-import{
-  generateClient as apiClientGenerator,
-  GraphQLResult,
-  GraphQLSubscription,
-}
-from "aws-amplify/api";
+import { Amplify } from "aws-amplify";
+import { generateClient as apiClientGenerator, GraphQLResult, GraphQLSubscription } from "aws-amplify/api";
 import { AiOutlineDelete, AiTwotoneEdit } from "react-icons/ai";
 import { CSVLink } from 'react-csv';
-import {Button,View, withAuthenticator} from "@aws-amplify/ui-react";
-import {
-
-}
+import { Button, View, withAuthenticator } from "@aws-amplify/ui-react";
+import { createStock as createStockMutation, deleteStock as deleteStockMutation, updateStock as updateStockMutation } from "../../../src/graphql/mutations";
 import type { WithAuthenticatorProps } from "@aws-amplify/ui-react";
+import config from "../src/amplifyconfiguration.json";
+
 Amplify.configure(config);
-const initialData={
+
+const initialData = {
   id: "",
   name: "",
   price: "",
   category: "",
-}
+};
+
 interface Item {
   id: string;
   name: string;
@@ -28,11 +25,10 @@ interface Item {
   category: string;
 }
 
-const initialData: Item[] = [];
 const initialCategories: string[] = ["Electronics", "Clothing", "Books"];
 
 const CrudComponent: React.FC = () => {
-  const [data, setData] = useState<Item[]>(initialData);
+  const [data, setData] = useState<Item[]>([]);
   const [categories, setCategories] = useState<string[]>(initialCategories);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [inputValue, setInputValue] = useState<string>('');
@@ -58,7 +54,7 @@ const CrudComponent: React.FC = () => {
 
   const handleAddItem = () => {
     if (inputValue.trim() !== '' && inputPrice.trim() !== '') {
-      const newItem: Item = { id: Date.now(), name: inputValue, price: inputPrice, category: selectedCategory };
+      const newItem: Item = { id: Date.now().toString(), name: inputValue, price: inputPrice, category: selectedCategory };
       setData([...data, newItem]);
       setInputValue('');
       setInputPrice('');
@@ -66,7 +62,7 @@ const CrudComponent: React.FC = () => {
     }
   };
 
-  const handleEditItem = (id: number) => {
+  const handleEditItem = (id: string) => {
     const itemToEdit = data.find(item => item.id === id);
     if (itemToEdit) {
       setInputValue(itemToEdit.name);
@@ -91,7 +87,7 @@ const CrudComponent: React.FC = () => {
     }
   };
 
-  const handleDeleteItem = (id: number) => {
+  const handleDeleteItem = (id: string) => {
     setData(data.filter(item => item.id !== id));
   };
 

@@ -1,0 +1,7 @@
+type Stock @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  name: String!
+  price: String
+  category: String
+ 
+}
