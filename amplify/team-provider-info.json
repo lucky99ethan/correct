@@ -19,5 +19,29 @@
         "correct": {}
       }
     }
+  },
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-correct-dev-e7b56-authRole",
+      "UnauthRoleArn": "arn:aws:iam::247328889623:role/amplify-correct-dev-e7b56-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::247328889623:role/amplify-correct-dev-e7b56-authRole",
+      "Region": "ap-southeast-1",
+      "DeploymentBucketName": "amplify-correct-dev-e7b56-deployment",
+      "UnauthRoleName": "amplify-correct-dev-e7b56-unauthRole",
+      "StackName": "amplify-correct-dev-e7b56",
+      "StackId": "arn:aws:cloudformation:ap-southeast-1:247328889623:stack/amplify-correct-dev-e7b56/196b6800-f31b-11ee-aec7-02e0ce05e231",
+      "AmplifyAppId": "d2pvub37ruge7l"
+    },
+    "categories": {
+      "auth": {
+        "correctfd61e458": {}
+      },
+      "api": {
+        "correct": {}
+      },
+      "storage": {
+        "correct": {}
+      }
+    }
   }
 }
