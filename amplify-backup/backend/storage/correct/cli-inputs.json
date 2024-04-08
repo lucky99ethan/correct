@@ -1,0 +1,14 @@
+{
+  "resourceName": "correct",
+  "policyUUID": "c65a5a4e",
+  "bucketName": "correct",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}
